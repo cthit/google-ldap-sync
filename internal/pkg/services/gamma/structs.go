@@ -1,7 +1,6 @@
 package gamma
 
 import (
-	"fmt"
 	"github.com/cthit/goldapps/internal/pkg/model"
 )
 
@@ -82,16 +81,12 @@ type FKITGroup struct {
 }
 
 func (user *FKITUser) toUser(group *FKITGroup) model.User {
-	newUser := model.User{}
-	newUser.Cid = user.Cid
-	newUser.FirstName = user.FirstName
-	newUser.SecondName = user.LastName
-	newUser.Nick = user.Nick
-
-	if shouldHaveMail(group, user) {
-		newUser.Mail = fmt.Sprintf("%s@chalmers.it", user.Cid)
-	} else {
-		newUser.Mail = user.Email
+	newUser := model.User{
+		Cid: user.Cid,
+		FirstName: user.FirstName,
+		SecondName: user.LastName,
+		Nick: user.Nick,
+		Mail: user.Email,
 	}
 
 	return newUser

@@ -111,7 +111,7 @@ func TestGetPostMails(t *testing.T) {
 		Active: true,
 		SuperGroup: FKITSuperGroup{
 			Type: "COMMITTEE",
-			Name: "supergroup",
+			Email: "supergroup@chalmers.it",
 		},
 		GroupMembers: []FKITUser{userA},
 	}
@@ -122,5 +122,5 @@ func TestGetPostMails(t *testing.T) {
 		{"kassorer@chalmers.it", "", []string{}, nil, false},
 		{"kassorer.kommitteer@chalmers.it", "", []string{}, nil, false}}
 
-	assert.Equal(t, want, getPostMails([]FKITGroup{groupA}))
+	assert.Equal(t, getPostMails([]FKITGroup{groupA}), want)
 }
